@@ -16,13 +16,27 @@
     .services { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; }
     .card { background:#1e293b; padding:25px; border-radius:20px; text-align:center; font-size:18px; }
     .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:10px; }
-    .gallery img { width:100%; border-radius:15px; }
-    iframe { width:100%; height:400px; border-radius:20px; }
+    .gallery img { width:100%; border-radius:15px; transition:0.3s; }
+    .gallery img:hover { transform:scale(1.05); }
+    iframe { width:100%; height:450px; border-radius:20px; }
     .testimonials { display:grid; gap:20px; }
     .testimonial { background:#1e293b; padding:20px; border-radius:15px; }
     .pricing { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
-    .price-card { background:#1e293b; padding:25px; border-radius:20px; text-align:center; position:relative; }
+    .price-card { background:#1e293b; padding:25px; border-radius:20px; text-align:center; position:relative; transition:0.3s; }
+    .price-card:hover { transform:translateY(-10px); }
     .badge { position:absolute; top:-10px; right:-10px; background:#f59e0b; color:black; padding:5px 10px; border-radius:10px; font-size:12px; }
+    .whatsapp-float {
+      position:fixed;
+      bottom:20px;
+      left:20px;
+      background:#25D366;
+      color:white;
+      padding:15px 20px;
+      border-radius:50px;
+      text-decoration:none;
+      font-weight:bold;
+      box-shadow:0 0 15px rgba(0,0,0,0.3);
+    }
     footer { text-align:center; padding:40px; background:#020617; }
   </style>
 </head>
@@ -37,15 +51,15 @@
 <section class="center">
   <h2>השירותים שלנו</h2>
   <div class="services">
-    <div class="card">📸 תמונות סטילס<br><strong>₪850</strong></div>
-    <div class="card">📘 תמונות סטילס + אלבום תמונות<br><strong>₪1,000</strong></div>
-    <div class="card">🎬 סרטון וידיאו מרגש<br><strong>₪1,300</strong></div>
-    <div class="card">🥁 כניסה להיכל עם חופה, שופרות ותופים<br><strong>₪1,200</strong></div>
+    <div class="card">📸 צילום סטילס + דיסקונקי<br><strong>₪850</strong></div>
+    <div class="card">📘 סטילס + אלבום 100 תמונות<br><strong>₪1,000</strong></div>
+    <div class="card">🎬 וידאו + קליפ סיכום<br><strong>₪1,300</strong></div>
+    <div class="card">🥁 כניסה עם שופרות ותופים<br><strong>₪1,200</strong></div>
   </div>
 </section>
 
 <section class="center">
-  <h2>רגעים מהאירועים שלנו</h2>
+  <h2>רגעים אמיתיים מהאירועים</h2>
   <div class="gallery">
     <img src="img1.jpg">
     <img src="img2.jpg">
@@ -55,15 +69,25 @@
 
 <section class="center">
   <h2>תראו איך זה נראה באמת</h2>
-  <iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+  <iframe src="https://www.youtube.com/embed/vEX0hv5a128"></iframe>
+</section>
+
+<section class="center">
+  <h2>למה דווקא אנחנו?</h2>
+  <div class="services">
+    <div class="card">✔️ ניסיון בצילום עשרות אירועים</div>
+    <div class="card">✔️ דגש על רגעים מרגשים ולא רק תמונות יפות</div>
+    <div class="card">✔️ שירות אישי וליווי לאורך כל האירוע</div>
+    <div class="card">✔️ איכות שלא מתפשרת</div>
+  </div>
 </section>
 
 <section class="center">
   <h2>מה לקוחות אומרים עלינו</h2>
   <div class="testimonials">
     <div class="testimonial">"הייתה חוויה מטורפת! הילד היה בעננים"</div>
-    <div class="testimonial">"הסרטון והתמונות מרגשות בטירוף ! ולחשוב שרצינו לצלם בפלאפון"</div>
-    <div class="testimonial">"שירות ברמה גבוהה ושלא נדבר על התוצאות !!!"</div>
+    <div class="testimonial">"הסרטון והתמונות מרגשות בטירוף!"</div>
+    <div class="testimonial">"שירות ברמה גבוהה ושלא נדבר על התוצאות!!!"</div>
   </div>
 </section>
 
@@ -72,18 +96,18 @@
   <div class="pricing">
     <div class="price-card">
       <h3>חבילה בסיסית</h3>
-      <p>תמונות סטילס + סרטון וידאו</p>
+      <p>סטילס + וידאו</p>
       <p><strong>₪1,999</strong></p>
     </div>
     <div class="price-card">
       <div class="badge">הכי פופולרי</div>
       <h3>חבילה מלאה</h3>
-      <p>סטילס + וידאו + כניסה להיכל</p>
+      <p>סטילס + וידאו + כניסה</p>
       <p><strong>₪3,200</strong></p>
     </div>
     <div class="price-card">
       <h3>פרימיום</h3>
-      <p>סטילס + אלבום + וידאו + כניסה להיכל</p>
+      <p>סטילס + אלבום + וידאו + כניסה</p>
       <p><strong>₪3,400</strong></p>
     </div>
   </div>
@@ -91,9 +115,11 @@
 
 <section id="contact" class="center">
   <h2>רוצים לשמור תאריך?</h2>
-  <p>שלחו הודעה עכשיו לפני שהתאריך נתפס</p>
-  <a class="btn" href="https://wa.me/972503385553">שלח הודעה בוואטסאפ</a>
+  <p>⚠️ התאריכים נתפסים מהר במיוחד בעונות עמוסות</p>
+  <a class="btn" href="https://wa.me/972503385553">שלח הודעה עכשיו</a>
 </section>
+
+<a class="whatsapp-float" href="https://wa.me/972503385553">💬 וואטסאפ</a>
 
 <footer>
   <p>כל הזכויות שמורות לעידו שיר-חן ©</p>
