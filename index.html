@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>עלייה לתורה - חוויה שלא שוכחים</title>
+  <title>עלייה לתורה - פעם בחיים</title>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -69,7 +69,8 @@
 <body>
 
 <header>
-  <h1>העלייה לתורה של הילד שלכם - רגע שלא חוזר פעמיים</h1>
+  <h1>העלייה לתורה של הילד שלכם</h1>
+  <h1>רגע שלא חוזר פעמיים</h1>
   <p>צילום מקצועי, שופרות ותופים - הופכים את היום הזה לחגיגה של פעם בחיים</p>
   <a href="#contact" class="btn">בדקו אם התאריך שלכם פנוי</a>
 </header>
@@ -87,14 +88,14 @@
 <section class="center">
   <h2>רגעים שתיעדנו</h2>
   <div class="gallery">
-    <a href="https://i.ibb.co/PH3nf3K/Whats-App-Image-2026-04-05-at-14-43-56-1.jpg" target="_blank">
-      <img src="https://i.ibb.co/PH3nf3K/Whats-App-Image-2026-04-05-at-14-43-56-1.jpg">
+    <a href="https://drive.google.com/uc?export=view&id=1TEADnVtrgvw2njLxUCl4RqoWEU44Tmom" target="_blank">
+      <img src="https://drive.google.com/uc?export=view&id=1TEADnVtrgvw2njLxUCl4RqoWEU44Tmom">
     </a>
-    <a href="https://i.ibb.co/jPf4nt8y/Whats-App-Image-2026-04-05-at-14-43-56-3.jpg" target="_blank">
-      <img src="https://i.ibb.co/jPf4nt8y/Whats-App-Image-2026-04-05-at-14-43-56-3.jpg">
+    <a href="https://drive.google.com/uc?export=view&id=1TIboHL8QtdaWPp3C8YWAVXFJ2EPgT0JK" target="_blank">
+      <img src="https://drive.google.com/uc?export=view&id=1TIboHL8QtdaWPp3C8YWAVXFJ2EPgT0JK">
     </a>
-    <a href="https://i.ibb.co/L4DVW77/Whats-App-Image-2026-04-05-at-14-43-56.jpg" target="_blank">
-      <img src="https://i.ibb.co/L4DVW77/Whats-App-Image-2026-04-05-at-14-43-56.jpg">
+    <a href="https://drive.google.com/uc?export=view&id=1dxEWJtEaAEzPsqzbra_NGYUaf7V_Zw6d" target="_blank">
+      <img src="https://drive.google.com/uc?export=view&id=1dxEWJtEaAEzPsqzbra_NGYUaf7V_Zw6d">
     </a>
   </div>
 </section>
@@ -107,7 +108,7 @@
 </section>
 
 <section class="center">
-  <h2>מה לקוחות אומרים עלינו</h2>
+  <h2>מה לקוחות אומרים עלינו?</h2>
   <div class="testimonials">
     <div class="testimonial">"הייתה חוויה מטורפת! הילד היה בעננים ועידו דאג לכל פרט ופרט. התמונות יצאו מדהימות!"</div>
     <div class="testimonial">"הסרטון והתמונות מרגשות בטירוף! לא מפסיקים לקבל מחמאות על התיעוד של האירוע."</div>
@@ -115,16 +116,68 @@
   </div>
 </section>
 
+<style>
+  /* עדכון ה-CSS של הכרטיסים */
+  .pricing { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px; 
+    margin-top: 50px; 
+    align-items: stretch; /* מוודא שכל הכרטיסים באותו גובה בשורה */
+  }
+
+  .price-card { 
+    background: #1e293b; 
+    padding: 40px 20px; 
+    border-radius: 25px; 
+    position: relative; 
+    border: 1px solid rgba(255,255,255,0.1); 
+    transition: 0.4s; 
+    
+    /* התיקון הקריטי כאן: */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* מצמיד את התוכן למעלה */
+  }
+
+  .price-card.popular { 
+    border: 2px solid #f59e0b; 
+    transform: scale(1.05); 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
+  }
+
+  .price-card h3, .price-card .price {
+    flex-shrink: 0; /* מונע מהכותרת והמחיר להתכווץ */
+  }
+
+  .price-card ul { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0 0 30px 0; 
+    opacity: 0.9; 
+    line-height: 2;
+    
+    /* הופך את הרשימה ל"גמישה" - היא תופסת את כל המקום הריק ודוחפת את הכפתור למטה */
+    flex-grow: 1; 
+  }
+
+  .price-card .btn {
+    align-self: center; /* מרכז את הכפתור */
+    margin-top: auto;   /* מוודא שהוא תמיד בתחתית הכרטיס */
+    width: fit-content;
+  }
+</style>
+
 <section class="center" id="pricing">
   <h2>חבילות לבחירה</h2>
   <div class="pricing">
+    
     <div class="price-card">
       <h3>חבילה בסיסית</h3>
       <div class="price">₪1,999</div>
       <ul>
-        <li>צילום סטילס ללא הגבלה</li>
-        <li>צילום וידאו מלא</li>
-        <li>קליפ סיכום ערוך</li>
+        <li>תמונות סטילס</li>
+        <li>קליפ וידיאו מרגש</li>
       </ul>
       <a href="https://wa.me/972503385553" class="btn">להזמנה</a>
     </div>
@@ -134,9 +187,9 @@
       <h3>חבילה מלאה</h3>
       <div class="price">₪3,200</div>
       <ul>
-        <li>צילום סטילס + וידאו</li>
-        <li>קליפ סיכום מרגש</li>
-        <li>כניסה עם שופרות ותופים</li>
+        <li>תמונות סטילס</li>
+        <li>קליפ וידיאו מרגש</li>
+        <li>כניסה עם שופרות, תופים וחופה</li>
       </ul>
       <a href="https://wa.me/972503385553" class="btn">להזמנה</a>
     </div>
@@ -145,19 +198,20 @@
       <h3>פרימיום</h3>
       <div class="price">₪3,400</div>
       <ul>
-        <li>צילום סטילס + וידאו</li>
-        <li>אלבום פוטובוק מעוצב</li>
-        <li>כניסה עם שופרות ותופים</li>
+        <li>תמונות סטילס</li>
+        <li>אלבום מעוצב</li>
+        <li>קליפ וידיאו מרגש</li>
+        <li>כניסה עם שופרות, תופים וחופה</li>
       </ul>
       <a href="https://wa.me/972503385553" class="btn">להזמנה</a>
     </div>
+    
   </div>
 </section>
-
 <section id="contact" class="center">
   <h2>רוצים לשמור תאריך?</h2>
   <p>⚠️ התאריכים נתפסים מהר במיוחד בעונות עמוסות</p>
-  <a class="btn" href="https://wa.me/972503385553">שלח הודעה עכשיו</a>
+  <a class="btn" href="https://wa.me/972503385553">שליחת הודעה עכשיו</a>
 </section>
 
 <a class="whatsapp-float" href="https://wa.me/972503385553">💬</a>
