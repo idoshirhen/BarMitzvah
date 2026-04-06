@@ -26,7 +26,7 @@
       overflow-x: hidden;
     }
     
-    /* Header עם תמונת רקע חדשה וכהות מוגברת לקריאות */
+    /* Header עם תמונת רקע חדשה שעובדת וכהות מוגברת */
     header { 
       height:100vh; 
       display:flex; 
@@ -34,15 +34,14 @@
       justify-content:center; 
       align-items:center; 
       text-align:center; 
-      background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
-                  url('https://images.unsplash.com/photo-1503917988258-f197e2f41965?auto=format&fit=crop&q=80&w=1920') center/cover; 
+      background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), 
+                  url('https://images.pexels.com/photos/15105500/pexels-photo-15105500.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') center/cover; 
       padding: 0 20px;
     }
 
     header h1 { font-size:clamp(32px, 8vw, 52px); margin:0; max-width:900px; line-height: 1.1; }
-    /* עיצוב ה-H2 שייראה כמו H1 לצרכי SEO */
     header h2 { font-size:clamp(32px, 8vw, 52px); margin:0; max-width:900px; line-height: 1.1; font-weight: 700; border:none; }
-    header h2::after { display: none; } /* ביטול הקו התחתון רק בכותרת הראשית */
+    header h2::after { display: none; } 
     
     header p { font-size:clamp(18px, 4vw, 22px); margin:25px 0; opacity: 0.9; max-width: 700px; }
 
@@ -101,7 +100,7 @@
     /* Gallery */
     .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:15px; }
     .gallery a { display: block; overflow: hidden; border-radius: 15px; }
-    .gallery img { width:100%; height: 300px; object-fit: cover; transition:0.5s; display: block; }
+    .gallery img { width:100%; height: 300px; object-fit: cover; transition:0.5s; display: block; background: #334155; }
     .gallery img:hover { transform:scale(1.05); }
 
     /* Video Section */
@@ -119,7 +118,7 @@
     }
     .testimonial::before { content: '״'; position: absolute; top: 10px; right: 20px; font-size: 50px; color: var(--primary); opacity: 0.3; }
 
-    /* Pricing Section Updated */
+    /* Pricing Section */
     .pricing { 
       display: grid; 
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
@@ -197,14 +196,14 @@
 <section class="center">
   <h2 data-aos="fade-up">רגעים שתיעדנו</h2>
   <div class="gallery">
-    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635419602255872/WhatsApp_Image_2026-04-05_at_14.43.56.jpeg" target="_blank" data-aos="fade-left">
-      <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635419602255872/WhatsApp_Image_2026-04-05_at_14.43.56.jpeg">
+    <a href="https://images.pexels.com/photos/15105504/pexels-photo-15105504.jpeg?auto=compress&cs=tinysrgb&w=600" target="_blank" data-aos="fade-left">
+      <img src="https://images.pexels.com/photos/15105504/pexels-photo-15105504.jpeg?auto=compress&cs=tinysrgb&w=600" alt="עליה לתורה">
     </a>
-    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420206370826/WhatsApp_Image_2026-04-05_at_14.43.56_1.jpeg" target="_blank" data-aos="fade-up">
-      <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420206370826/WhatsApp_Image_2026-04-05_at_14.43.56_1.jpeg">
+    <a href="https://images.pexels.com/photos/15105505/pexels-photo-15105505.jpeg?auto=compress&cs=tinysrgb&w=600" target="_blank" data-aos="fade-up">
+      <img src="https://images.pexels.com/photos/15105505/pexels-photo-15105505.jpeg?auto=compress&cs=tinysrgb&w=600" alt="ספר תורה">
     </a>
-    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420596437095/WhatsApp_Image_2026-04-05_at_14.43.56_3.jpeg" target="_blank" data-aos="fade-right">
-      <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420596437095/WhatsApp_Image_2026-04-05_at_14.43.56_3.jpeg">
+    <a href="https://images.pexels.com/photos/15105508/pexels-photo-15105508.jpeg?auto=compress&cs=tinysrgb&w=600" target="_blank" data-aos="fade-right">
+      <img src="https://images.pexels.com/photos/15105508/pexels-photo-15105508.jpeg?auto=compress&cs=tinysrgb&w=600" alt="בית כנסת">
     </a>
   </div>
 </section>
@@ -233,8 +232,8 @@
       <h3>חבילה בסיסית</h3>
       <div class="price">₪1,999</div>
       <ul>
-        <li>✅ תמונות סטילס</li>
-        <li>✅ קליפ וידיאו מרגש</li>
+        <li>תמונות סטילס</li>
+        <li>קליפ וידיאו מרגש</li>
       </ul>
       <a href="https://wa.me/972503385553" class="btn">להזמנה</a>
     </div>
@@ -244,10 +243,10 @@
       <h3>חבילה מלאה</h3>
       <div class="price">₪3,200</div>
       <ul>
-        <li>✅ תמונות סטילס</li>
-        <li>✅ קליפ וידיאו מרגש</li>
-        <li>✅ כניסה עם שופרות ותופים</li>
-        <li>✅ חופה מסורתית</li>
+        <li>תמונות סטילס</li>
+        <li>קליפ וידיאו מרגש</li>
+        <li>כניסה עם שופרות ותופים</li>
+        <li>חופה מסורתית</li>
       </ul>
       <a href="https://wa.me/972503385553" class="btn">להזמנה</a>
     </div>
@@ -256,10 +255,10 @@
       <h3>פרימיום</h3>
       <div class="price">₪3,600</div>
       <ul>
-        <li>✅ תמונות סטילס</li>
-        <li>✅ אלבום מעוצב</li>
-        <li>✅ קליפ וידיאו מרגש</li>
-        <li>✅ שופרות, תופים וחופה</li>
+        <li>תמונות סטילס</li>
+        <li>אלבום מעוצב</li>
+        <li>קליפ וידיאו מרגש</li>
+        <li>שופרות, תופים וחופה</li>
       </ul>
       <a href="https://wa.me/972503385553" class="btn">להזמנה</a>
     </div>
@@ -284,8 +283,8 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init({
-    duration: 800, // מהירות האנימציה (מילישניות)
-    once: true,    // שהאנימציה תקרה רק פעם אחת ולא בכל גלילה
+    duration: 800, 
+    once: true,    
   });
 </script>
 
