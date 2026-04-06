@@ -21,7 +21,6 @@
     html, body { 
       scroll-behavior: smooth; 
       scroll-padding-top: 20px;
-      /* מניעת תזוזה לצדדים במובייל */
       overflow-x: hidden;
       width: 100%;
       position: relative;
@@ -107,13 +106,49 @@
     }
     .card:hover { transform: translateY(-5px); border-color: var(--primary); }
 
+    /* עיצוב הגלריה החדש - גלילה אופקית */
     .gallery { 
-        display:grid; 
-        grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); 
-        gap:15px; 
+        display: flex; 
+        gap: 20px; 
+        overflow-x: auto; 
+        scroll-snap-type: x mandatory;
+        padding: 20px 10px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary) transparent;
     }
-    .gallery a { display: block; overflow: hidden; border-radius: 15px; }
-    .gallery img { width:100%; height: 300px; object-fit: cover; transition:0.5s; display: block; background: #334155; }
+
+    .gallery::-webkit-scrollbar {
+        height: 6px;
+    }
+    .gallery::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 10px;
+    }
+
+    .gallery a { 
+        flex: 0 0 320px; /* רוחב התמונה במחשב */
+        scroll-snap-align: center; 
+        display: block; 
+        overflow: hidden; 
+        border-radius: 15px; 
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 768px) {
+        .gallery a {
+            flex: 0 0 85%; /* בנייד - רואים תמונה אחת ועוד קצת מהבאה */
+        }
+    }
+
+    .gallery img { 
+        width:100%; 
+        height: 400px; 
+        object-fit: cover; 
+        transition:0.5s; 
+        display: block; 
+        background: #334155; 
+    }
     .gallery img:hover { transform:scale(1.05); }
 
     .video-container { 
@@ -159,7 +194,6 @@
       border: 2px solid var(--primary); 
       z-index: 2;
     }
-    /* ביטול ה-scale במובייל כדי למנוע חריגה מהמסך */
     @media (min-width: 768px) {
         .price-card.popular { transform: scale(1.05); }
     }
@@ -182,7 +216,6 @@
 
     footer { text-align:center; padding:40px 20px; background:#020617; border-top: 1px solid rgba(255,255,255,0.05); }
 
-    /* תיקון AOS למובייל - מניעת גלילה אופקית בזמן אנימציה */
     [data-aos] {
       pointer-events: none;
     }
@@ -214,17 +247,17 @@
 
 <section class="center">
   <h2 data-aos="fade-up">רגעים שתיעדנו</h2>
-  <div class="gallery">
-    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635419602255872/WhatsApp_Image_2026-04-05_at_14.43.56.jpeg?ex=69d4c5ea&is=69d3746a&hm=eb2c292260b3c9333fd18032f1b4432324469534fd15ecef86cecf32ef3eec33&" target="_blank" data-aos="fade-left">
+  <div class="gallery" data-aos="fade-up">
+    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635419602255872/WhatsApp_Image_2026-04-05_at_14.43.56.jpeg?ex=69d4c5ea&is=69d3746a&hm=eb2c292260b3c9333fd18032f1b4432324469534fd15ecef86cecf32ef3eec33&" target="_blank">
       <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635419602255872/WhatsApp_Image_2026-04-05_at_14.43.56.jpeg?ex=69d4c5ea&is=69d3746a&hm=eb2c292260b3c9333fd18032f1b4432324469534fd15ecef86cecf32ef3eec33&" alt="עליה לתורה">
     </a>
-    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420206370826/WhatsApp_Image_2026-04-05_at_14.43.56_1.jpeg?ex=69d4c5ea&is=69d3746a&hm=f9c64458318052ca76f468a2a9b1e9849bf3c8f90f30502e0894a0f97b4ef0d6&" target="_blank" data-aos="fade-up">
+    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420206370826/WhatsApp_Image_2026-04-05_at_14.43.56_1.jpeg?ex=69d4c5ea&is=69d3746a&hm=f9c64458318052ca76f468a2a9b1e9849bf3c8f90f30502e0894a0f97b4ef0d6&" target="_blank">
       <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420206370826/WhatsApp_Image_2026-04-05_at_14.43.56_1.jpeg?ex=69d4c5ea&is=69d3746a&hm=f9c64458318052ca76f468a2a9b1e9849bf3c8f90f30502e0894a0f97b4ef0d6&" alt="ספר תורה">
     </a>
-    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420596437095/WhatsApp_Image_2026-04-05_at_14.43.56_3.jpeg?ex=69d4c5ea&is=69d3746a&hm=c8e1c9d22a6562ba3dfbbc90d3193b135f78e76417b68a319233c65ff9a654ba&" target="_blank" data-aos="fade-right">
+    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420596437095/WhatsApp_Image_2026-04-05_at_14.43.56_3.jpeg?ex=69d4c5ea&is=69d3746a&hm=c8e1c9d22a6562ba3dfbbc90d3193b135f78e76417b68a319233c65ff9a654ba&" target="_blank">
       <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420596437095/WhatsApp_Image_2026-04-05_at_14.43.56_3.jpeg?ex=69d4c5ea&is=69d3746a&hm=c8e1c9d22a6562ba3dfbbc90d3193b135f78e76417b68a319233c65ff9a654ba&" alt="בית כנסת">
     </a>
-  </div>
+    </div>
 </section>
 
 <section class="center">
@@ -301,7 +334,7 @@
   AOS.init({
     duration: 800, 
     once: true,
-    disable: false // אפשר לשנות ל-'mobile' אם האנימציות מכבידות על המכשיר
+    disable: false 
   });
 </script>
 
