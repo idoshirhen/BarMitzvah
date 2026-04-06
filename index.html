@@ -3,35 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>עלייה לתורה - פעם בחיים</title>
+  <title>עלייה לתורה - פעם בחיים | עידו שיר-חן</title>
+  
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap" rel="stylesheet">
+  
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <style>
     :root {
       --primary: #f59e0b;
       --bg: #0f172a;
       --card-bg: #1e293b;
     }
-    body { margin:0; font-family:'Rubik', sans-serif; background: var(--bg); color:white; scroll-behavior: smooth; }
     
+    html { scroll-behavior: smooth; scroll-padding-top: 20px; }
+    
+    body { 
+      margin:0; 
+      font-family:'Rubik', sans-serif; 
+      background: var(--bg); 
+      color:white; 
+      overflow-x: hidden;
+    }
+    
+    /* Header עם תמונת רקע חדשה וכהות מוגברת לקריאות */
     header { 
-      height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; 
-      text-align:center; background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1543157145-f78c636d023d?auto=format&fit=crop&q=80&w=1920') center/cover; 
+      height:100vh; 
+      display:flex; 
+      flex-direction:column; 
+      justify-content:center; 
+      align-items:center; 
+      text-align:center; 
+      background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
+                  url('https://images.unsplash.com/photo-1503917988258-f197e2f41965?auto=format&fit=crop&q=80&w=1920') center/cover; 
       padding: 0 20px;
     }
-    header h1 { font-size:clamp(32px, 8vw, 52px); margin:0; max-width:900px; line-height: 1.2; }
-    header p { font-size:clamp(18px, 4vw, 22px); margin:20px 0; opacity: 0.9; }
 
-    .btn { background: var(--primary); padding:15px 40px; border-radius:50px; text-decoration:none; color:black; font-weight:bold; transition: 0.3s; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3); display: inline-block; }
+    header h1 { font-size:clamp(32px, 8vw, 52px); margin:0; max-width:900px; line-height: 1.1; }
+    /* עיצוב ה-H2 שייראה כמו H1 לצרכי SEO */
+    header h2 { font-size:clamp(32px, 8vw, 52px); margin:0; max-width:900px; line-height: 1.1; font-weight: 700; border:none; }
+    header h2::after { display: none; } /* ביטול הקו התחתון רק בכותרת הראשית */
+    
+    header p { font-size:clamp(18px, 4vw, 22px); margin:25px 0; opacity: 0.9; max-width: 700px; }
+
+    .btn { 
+      background: var(--primary); 
+      padding:15px 40px; 
+      border-radius:50px; 
+      text-decoration:none; 
+      color:black; 
+      font-weight:bold; 
+      transition: 0.3s; 
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3); 
+      display: inline-block; 
+    }
     .btn:hover { transform: scale(1.05); background: #fbbf24; }
 
     section { padding:80px 20px; max-width:1100px; margin:auto; }
-    h2 { font-size: 36px; margin-bottom: 40px; position: relative; display: inline-block; text-align: center; width: 100%; }
-    h2::after { content: ''; width: 60px; height: 4px; background: var(--primary); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); border-radius: 2px; }
+    
+    h2 { 
+      font-size: 36px; 
+      margin-bottom: 40px; 
+      position: relative; 
+      display: inline-block; 
+      text-align: center; 
+      width: 100%; 
+    }
+    h2::after { 
+      content: ''; 
+      width: 60px; 
+      height: 4px; 
+      background: var(--primary); 
+      position: absolute; 
+      bottom: -10px; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      border-radius: 2px; 
+    }
 
     .center { text-align:center; }
     
-    .services { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; margin-top: 40px; }
-    .card { background: var(--card-bg); padding:25px; border-radius:20px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+    .services { 
+      display:grid; 
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); 
+      gap:20px; 
+      margin-top: 40px; 
+    }
+    .card { 
+      background: var(--card-bg); 
+      padding:25px; 
+      border-radius:20px; 
+      border: 1px solid rgba(255,255,255,0.05); 
+      transition: 0.3s; 
+    }
+    .card:hover { transform: translateY(-5px); border-color: var(--primary); }
 
     /* Gallery */
     .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:15px; }
@@ -45,173 +110,169 @@
 
     /* Testimonials */
     .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 40px; }
-    .testimonial { background: var(--card-bg); padding: 30px; border-radius: 20px; position: relative; border-bottom: 4px solid var(--primary); }
+    .testimonial { 
+      background: var(--card-bg); 
+      padding: 30px; 
+      border-radius: 20px; 
+      position: relative; 
+      border-bottom: 4px solid var(--primary); 
+    }
     .testimonial::before { content: '״'; position: absolute; top: 10px; right: 20px; font-size: 50px; color: var(--primary); opacity: 0.3; }
 
-    /* Pricing Section */
-    .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
-    .price-card { background: var(--card-bg); padding: 40px 20px; border-radius: 25px; position: relative; border: 1px solid rgba(255,255,255,0.1); transition: 0.4s; }
-    .price-card.popular { border: 2px solid var(--primary); transform: scale(1.05); background: #1e293b; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-    .badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: black; padding: 5px 20px; border-radius: 20px; font-weight: bold; font-size: 14px; }
+    /* Pricing Section Updated */
+    .pricing { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      gap: 30px; 
+      margin-top: 50px; 
+      align-items: stretch; 
+    }
+
+    .price-card { 
+      background: #1e293b; 
+      padding: 40px 20px; 
+      border-radius: 25px; 
+      position: relative; 
+      border: 1px solid rgba(255,255,255,0.1); 
+      transition: 0.4s; 
+      display: flex;
+      flex-direction: column;
+    }
+
+    .price-card.popular { 
+      border: 2px solid var(--primary); 
+      transform: scale(1.05); 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
+      z-index: 2;
+    }
+
+    .badge { 
+      position: absolute; top: -15px; left: 50%; transform: translateX(-50%); 
+      background: var(--primary); color: black; padding: 5px 20px; 
+      border-radius: 20px; font-weight: bold; font-size: 14px; 
+    }
+
     .price-card h3 { font-size: 28px; margin-bottom: 10px; }
     .price-card .price { font-size: 32px; color: var(--primary); font-weight: bold; margin: 20px 0; }
-    .price-card ul { list-style: none; padding: 0; margin-bottom: 30px; opacity: 0.9; line-height: 2; }
+    
+    .price-card ul { 
+      list-style: none; padding: 0; margin: 0 0 30px 0; 
+      opacity: 0.9; line-height: 2; flex-grow: 1; 
+    }
+
+    .price-card .btn { align-self: center; margin-top: auto; }
 
     .whatsapp-float {
       position:fixed; bottom:20px; left:20px; background:#25D366; color:white; width: 60px; height: 60px; 
       border-radius:50%; display: flex; align-items: center; justify-content: center; font-size: 30px;
       text-decoration:none; box-shadow:0 10px 25px rgba(37, 211, 102, 0.4); z-index: 1000;
+      transition: 0.3s;
     }
+    .whatsapp-float:hover { transform: scale(1.1); }
 
-    footer { text-align:center; padding:60px 20px; background:#020617; }
+    footer { text-align:center; padding:60px 20px; background:#020617; border-top: 1px solid rgba(255,255,255,0.05); }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>העלייה לתורה של הילד שלכם</h1>
-  <h1>רגע שלא חוזר פעמיים</h1>
-  <p>צילום מקצועי, שופרות ותופים - הופכים את היום הזה לחגיגה של פעם בחיים</p>
-  <a href="#contact" class="btn">בדקו אם התאריך שלכם פנוי</a>
+  <div data-aos="fade-down" data-aos-duration="1000">
+    <h1>העלייה לתורה של הילד שלכם</h1>
+    <h2>רגע שלא חוזר פעמיים</h2>
+    <p>צילום מקצועי, שופרות ותופים - הופכים את היום הזה לחגיגה של פעם בחיים</p>
+    <a href="#contact" class="btn">בדקו אם התאריך שלכם פנוי</a>
+  </div>
 </header>
 
-<section class="center">
-  <h2>השירותים שלנו</h2>
+<section class="center" id="services">
+  <h2 data-aos="fade-up">השירותים שלנו</h2>
   <div class="services">
-    <div class="card">📸<br><strong>צילום סטילס + דיסקונקי</strong><br>₪850</div>
-    <div class="card">📘<br><strong>סטילס + אלבום פרימיום</strong><br>₪1,000</div>
-    <div class="card">🎬<br><strong>וידאו + קליפ סיכום ערוך</strong><br>₪1,300</div>
-    <div class="card">🥁<br><strong>כניסה עם שופרות ותופים</strong><br>₪1,200</div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="100">📸<br><strong>צילום סטילס + דיסקונקי</strong><br>₪850</div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="200">📘<br><strong>סטילס + אלבום פרימיום</strong><br>₪1,000</div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="300">🎬<br><strong>וידאו + קליפ סיכום ערוך</strong><br>₪1,300</div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="400">🥁<br><strong>כניסה עם שופרות ותופים</strong><br>₪1,200</div>
   </div>
 </section>
 
 <section class="center">
-  <h2>רגעים שתיעדנו</h2>
+  <h2 data-aos="fade-up">רגעים שתיעדנו</h2>
   <div class="gallery">
-    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635419602255872/WhatsApp_Image_2026-04-05_at_14.43.56.jpeg?ex=69d4c5ea&is=69d3746a&hm=eb2c292260b3c9333fd18032f1b4432324469534fd15ecef86cecf32ef3eec33&" target="_blank">
-      <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635419602255872/WhatsApp_Image_2026-04-05_at_14.43.56.jpeg?ex=69d4c5ea&is=69d3746a&hm=eb2c292260b3c9333fd18032f1b4432324469534fd15ecef86cecf32ef3eec33&">
+    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635419602255872/WhatsApp_Image_2026-04-05_at_14.43.56.jpeg" target="_blank" data-aos="fade-left">
+      <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635419602255872/WhatsApp_Image_2026-04-05_at_14.43.56.jpeg">
     </a>
-    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420206370826/WhatsApp_Image_2026-04-05_at_14.43.56_1.jpeg?ex=69d4c5ea&is=69d3746a&hm=f9c64458318052ca76f468a2a9b1e9849bf3c8f90f30502e0894a0f97b4ef0d6&" target="_blank">
-      <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420206370826/WhatsApp_Image_2026-04-05_at_14.43.56_1.jpeg?ex=69d4c5ea&is=69d3746a&hm=f9c64458318052ca76f468a2a9b1e9849bf3c8f90f30502e0894a0f97b4ef0d6&">
+    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420206370826/WhatsApp_Image_2026-04-05_at_14.43.56_1.jpeg" target="_blank" data-aos="fade-up">
+      <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420206370826/WhatsApp_Image_2026-04-05_at_14.43.56_1.jpeg">
     </a>
-    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420596437095/WhatsApp_Image_2026-04-05_at_14.43.56_3.jpeg?ex=69d4c5ea&is=69d3746a&hm=c8e1c9d22a6562ba3dfbbc90d3193b135f78e76417b68a319233c65ff9a654ba&" target="_blank">
-      <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420596437095/WhatsApp_Image_2026-04-05_at_14.43.56_3.jpeg?ex=69d4c5ea&is=69d3746a&hm=c8e1c9d22a6562ba3dfbbc90d3193b135f78e76417b68a319233c65ff9a654ba&">
+    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420596437095/WhatsApp_Image_2026-04-05_at_14.43.56_3.jpeg" target="_blank" data-aos="fade-right">
+      <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420596437095/WhatsApp_Image_2026-04-05_at_14.43.56_3.jpeg">
     </a>
   </div>
 </section>
 
 <section class="center">
-  <h2>ככה זה נראה בלייב</h2>
-  <div class="video-container">
+  <h2 data-aos="fade-up">ככה זה נראה בלייב</h2>
+  <div class="video-container" data-aos="zoom-in">
     <iframe src="https://www.youtube.com/embed/vEX0hv5a128" frameborder="0" allowfullscreen></iframe>
   </div>
 </section>
 
 <section class="center">
-  <h2>מה לקוחות אומרים עלינו?</h2>
+  <h2 data-aos="fade-up">מה לקוחות אומרים עלינו?</h2>
   <div class="testimonials">
-    <div class="testimonial">"הייתה חוויה מטורפת! הילד היה בעננים ועידו דאג לכל פרט ופרט. התמונות יצאו מדהימות!"</div>
-    <div class="testimonial">"הסרטון והתמונות מרגשות בטירוף! לא מפסיקים לקבל מחמאות על התיעוד של האירוע."</div>
-    <div class="testimonial">"שירות ברמה הכי גבוהה שיש, סבלנות ודיוק. מומלץ בחום לכל מי שרוצה שקט נפשי."</div>
+    <div class="testimonial" data-aos="fade-up" data-aos-delay="100">"הייתה חוויה מטורפת! הילד היה בעננים ועידו דאג לכל פרט ופרט. התמונות יצאו מדהימות!"</div>
+    <div class="testimonial" data-aos="fade-up" data-aos-delay="200">"הסרטון והתמונות מרגשות בטירוף! לא מפסיקים לקבל מחמאות על התיעוד של האירוע."</div>
+    <div class="testimonial" data-aos="fade-up" data-aos-delay="300">"שירות ברמה הכי גבוהה שיש, סבלנות ודיוק. מומלץ בחום לכל מי שרוצה שקט נפשי."</div>
   </div>
 </section>
 
-<style>
-  /* עדכון ה-CSS של הכרטיסים */
-  .pricing { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 30px; 
-    margin-top: 50px; 
-    align-items: stretch; /* מוודא שכל הכרטיסים באותו גובה בשורה */
-  }
-
-  .price-card { 
-    background: #1e293b; 
-    padding: 40px 20px; 
-    border-radius: 25px; 
-    position: relative; 
-    border: 1px solid rgba(255,255,255,0.1); 
-    transition: 0.4s; 
-    
-    /* התיקון הקריטי כאן: */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* מצמיד את התוכן למעלה */
-  }
-
-  .price-card.popular { 
-    border: 2px solid #f59e0b; 
-    transform: scale(1.05); 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
-  }
-
-  .price-card h3, .price-card .price {
-    flex-shrink: 0; /* מונע מהכותרת והמחיר להתכווץ */
-  }
-
-  .price-card ul { 
-    list-style: none; 
-    padding: 0; 
-    margin: 0 0 30px 0; 
-    opacity: 0.9; 
-    line-height: 2;
-    
-    /* הופך את הרשימה ל"גמישה" - היא תופסת את כל המקום הריק ודוחפת את הכפתור למטה */
-    flex-grow: 1; 
-  }
-
-  .price-card .btn {
-    align-self: center; /* מרכז את הכפתור */
-    margin-top: auto;   /* מוודא שהוא תמיד בתחתית הכרטיס */
-    width: fit-content;
-  }
-</style>
-
 <section class="center" id="pricing">
-  <h2>חבילות לבחירה</h2>
+  <h2 data-aos="fade-up">חבילות לבחירה</h2>
   <div class="pricing">
     
-    <div class="price-card">
+    <div class="price-card" data-aos="fade-left">
       <h3>חבילה בסיסית</h3>
       <div class="price">₪1,999</div>
       <ul>
-        <li>תמונות סטילס</li>
-        <li>קליפ וידיאו מרגש</li>
+        <li>✅ תמונות סטילס</li>
+        <li>✅ קליפ וידיאו מרגש</li>
       </ul>
       <a href="https://wa.me/972503385553" class="btn">להזמנה</a>
     </div>
 
-    <div class="price-card popular">
+    <div class="price-card popular" data-aos="fade-up">
       <div class="badge">הכי פופולרי</div>
       <h3>חבילה מלאה</h3>
       <div class="price">₪3,200</div>
       <ul>
-        <li>תמונות סטילס</li>
-        <li>קליפ וידיאו מרגש</li>
-        <li>כניסה עם שופרות, תופים וחופה</li>
+        <li>✅ תמונות סטילס</li>
+        <li>✅ קליפ וידיאו מרגש</li>
+        <li>✅ כניסה עם שופרות ותופים</li>
+        <li>✅ חופה מסורתית</li>
       </ul>
       <a href="https://wa.me/972503385553" class="btn">להזמנה</a>
     </div>
 
-    <div class="price-card">
+    <div class="price-card" data-aos="fade-right">
       <h3>פרימיום</h3>
       <div class="price">₪3,600</div>
       <ul>
-        <li>✅תמונות סטילס</li>
-        <li>✅אלבום מעוצב</li>
-        <li>✅קליפ וידיאו מרגש</li>
-        <li>✅כניסה עם שופרות, תופים וחופה</li>
+        <li>✅ תמונות סטילס</li>
+        <li>✅ אלבום מעוצב</li>
+        <li>✅ קליפ וידיאו מרגש</li>
+        <li>✅ שופרות, תופים וחופה</li>
       </ul>
       <a href="https://wa.me/972503385553" class="btn">להזמנה</a>
     </div>
     
   </div>
 </section>
+
 <section id="contact" class="center">
-  <h2>רוצים לשמור תאריך?</h2>
-  <p>⚠️ התאריכים נתפסים מהר במיוחד בעונות עמוסות</p>
-  <a class="btn" href="https://wa.me/972503385553">שליחת הודעה עכשיו</a>
+  <div data-aos="zoom-out">
+    <h2>רוצים לשמור תאריך?</h2>
+    <p>⚠️ התאריכים נתפסים מהר במיוחד בעונות עמוסות</p>
+    <a class="btn" href="https://wa.me/972503385553">שליחת הודעה עכשיו</a>
+  </div>
 </section>
 
 <a class="whatsapp-float" href="https://wa.me/972503385553">💬</a>
@@ -219,6 +280,14 @@
 <footer>
   <p>כל הזכויות שמורות לעידו שיר-חן © 2026</p>
 </footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800, // מהירות האנימציה (מילישניות)
+    once: true,    // שהאנימציה תקרה רק פעם אחת ולא בכל גלילה
+  });
+</script>
 
 </body>
 </html>
