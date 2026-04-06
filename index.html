@@ -106,28 +106,40 @@
     }
     .card:hover { transform: translateY(-5px); border-color: var(--primary); }
 
-    /* עיצוב הגלריה החדש - גלילה אופקית */
+    /* מעטפת לגלריה עם חצים */
+    .gallery-wrapper {
+        position: relative;
+        width: 100%;
+        margin-top: 20px;
+    }
+
     .gallery { 
         display: flex; 
         gap: 20px; 
         overflow-x: auto; 
         scroll-snap-type: x mandatory;
-        padding: 20px 10px;
+        padding: 20px 0;
+        scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: thin;
-        scrollbar-color: var(--primary) transparent;
     }
 
+    /* עיצוב פס גלילה ללא חצי קצה */
     .gallery::-webkit-scrollbar {
         height: 6px;
+    }
+    .gallery::-webkit-scrollbar-button {
+        display: none; /* מסיר את החצים הקטנים בקצוות הפס */
     }
     .gallery::-webkit-scrollbar-thumb {
         background: var(--primary);
         border-radius: 10px;
     }
+    .gallery::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.05);
+    }
 
     .gallery a { 
-        flex: 0 0 320px; /* רוחב התמונה במחשב */
+        flex: 0 0 320px; 
         scroll-snap-align: center; 
         display: block; 
         overflow: hidden; 
@@ -136,9 +148,8 @@
     }
 
     @media (max-width: 768px) {
-        .gallery a {
-            flex: 0 0 85%; /* בנייד - רואים תמונה אחת ועוד קצת מהבאה */
-        }
+        .gallery a { flex: 0 0 85%; }
+        .nav-btn { display: none; } /* מחביא חצים בנייד כי שם משתמשים באצבע */
     }
 
     .gallery img { 
@@ -150,6 +161,31 @@
         background: #334155; 
     }
     .gallery img:hover { transform:scale(1.05); }
+
+    /* כפתורי חצים */
+    .nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 45px;
+        height: 45px;
+        background: var(--primary);
+        color: black;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10;
+        font-size: 20px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        transition: 0.3s;
+    }
+    .nav-btn:hover { background: white; transform: translateY(-50%) scale(1.1); }
+    .prev { right: -25px; } /* ימין */
+    .next { left: -25px; }  /* שמאל */
 
     .video-container { 
         width: 100%;
@@ -247,32 +283,38 @@
 
 <section class="center">
   <h2 data-aos="fade-up">רגעים שתיעדנו</h2>
-  <div class="gallery" data-aos="fade-up">
-    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420206370826/WhatsApp_Image_2026-04-05_at_14.43.56_1.jpeg?ex=69d4c5ea&is=69d3746a&hm=f9c64458318052ca76f468a2a9b1e9849bf3c8f90f30502e0894a0f97b4ef0d6&" target="_blank">
-      <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420206370826/WhatsApp_Image_2026-04-05_at_14.43.56_1.jpeg?ex=69d4c5ea&is=69d3746a&hm=f9c64458318052ca76f468a2a9b1e9849bf3c8f90f30502e0894a0f97b4ef0d6&" alt="ספר תורה">
-    </a>
-    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490677636983292024/WhatsApp_Image_2026-04-06_at_14.26.58.jpeg?ex=69d4ed3c&is=69d39bbc&hm=27fd7ae8ab4695bd3aef77a3649aea877b8fdc2c70337080868d9e855b7a8483&"_blank">
-      <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490677636983292024/WhatsApp_Image_2026-04-06_at_14.26.58.jpeg?ex=69d4ed3c&is=69d39bbc&hm=27fd7ae8ab4695bd3aef77a3649aea877b8fdc2c70337080868d9e855b7a8483&" alt="בית כנסת">
-    </a>
-    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490677635548971028/WhatsApp_Image_2026-04-06_at_14.26.06.jpeg?ex=69d4ed3b&is=69d39bbb&hm=2c2edacc3279c9ad1860bd10641a88b3537fea565769e3fe9f39ab0a5bef65db&"_blank">
-      <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490677635548971028/WhatsApp_Image_2026-04-06_at_14.26.06.jpeg?ex=69d4ed3b&is=69d39bbb&hm=2c2edacc3279c9ad1860bd10641a88b3537fea565769e3fe9f39ab0a5bef65db&" alt="בית כנסת">
-    </a>
-    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420596437095/WhatsApp_Image_2026-04-05_at_14.43.56_3.jpeg?ex=69d4c5ea&is=69d3746a&hm=c8e1c9d22a6562ba3dfbbc90d3193b135f78e76417b68a319233c65ff9a654ba&" target="_blank">
-      <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420596437095/WhatsApp_Image_2026-04-05_at_14.43.56_3.jpeg?ex=69d4c5ea&is=69d3746a&hm=c8e1c9d22a6562ba3dfbbc90d3193b135f78e76417b68a319233c65ff9a654ba&" alt="בית כנסת">
-    </a>
-    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490677634848264302/WhatsApp_Image_2026-04-06_at_14.23.23.jpeg?ex=69d4ed3b&is=69d39bbb&hm=f376c958c48323be77e2e2df8f2a3232ca0dae7ea09e6d33e65bdb77db38da46&"_blank">
-      <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490677634848264302/WhatsApp_Image_2026-04-06_at_14.23.23.jpeg?ex=69d4ed3b&is=69d39bbb&hm=f376c958c48323be77e2e2df8f2a3232ca0dae7ea09e6d33e65bdb77db38da46&" alt="בית כנסת">
-    </a>
-    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490677633556549743/WhatsApp_Image_2026-04-06_at_14.29.13.jpeg?ex=69d4ed3b&is=69d39bbb&hm=16474f23a2363ce3c9913fcc56dac9f27121ba54ca75951a8834da4c4247c80b&"_blank">
-      <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490677633556549743/WhatsApp_Image_2026-04-06_at_14.29.13.jpeg?ex=69d4ed3b&is=69d39bbb&hm=16474f23a2363ce3c9913fcc56dac9f27121ba54ca75951a8834da4c4247c80b&" alt="בית כנסת">
-    </a>
-    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490677636203020331/WhatsApp_Image_2026-04-06_at_14.26.16.jpeg?ex=69d4ed3b&is=69d39bbb&hm=7b4ba39f948102a4ab71baa92d4f7eb720bf06d5b7f16c24b152c12b2eb6e4da&" target="_blank">
-      <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490677636203020331/WhatsApp_Image_2026-04-06_at_14.26.16.jpeg?ex=69d4ed3b&is=69d39bbb&hm=7b4ba39f948102a4ab71baa92d4f7eb720bf06d5b7f16c24b152c12b2eb6e4da&" alt="ספר תורה">
-    </a>
-    <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635419602255872/WhatsApp_Image_2026-04-05_at_14.43.56.jpeg?ex=69d4c5ea&is=69d3746a&hm=eb2c292260b3c9333fd18032f1b4432324469534fd15ecef86cecf32ef3eec33&" target="_blank">
-      <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635419602255872/WhatsApp_Image_2026-04-05_at_14.43.56.jpeg?ex=69d4c5ea&is=69d3746a&hm=eb2c292260b3c9333fd18032f1b4432324469534fd15ecef86cecf32ef3eec33&" alt="עליה לתורה">
-    </a>
+  
+  <div class="gallery-wrapper" data-aos="fade-up">
+    <button class="nav-btn prev" onclick="scrollGal(1)">&#10095;</button>
+    <button class="nav-btn next" onclick="scrollGal(-1)">&#10094;</button>
+
+    <div class="gallery" id="mainGallery">
+        <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420206370826/WhatsApp_Image_2026-04-05_at_14.43.56_1.jpeg?ex=69d4c5ea&is=69d3746a&hm=f9c64458318052ca76f468a2a9b1e9849bf3c8f90f30502e0894a0f97b4ef0d6&" target="_blank">
+          <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420206370826/WhatsApp_Image_2026-04-05_at_14.43.56_1.jpeg?ex=69d4c5ea&is=69d3746a&hm=f9c64458318052ca76f468a2a9b1e9849bf3c8f90f30502e0894a0f97b4ef0d6&" alt="ספר תורה">
+        </a>
+        <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490677636983292024/WhatsApp_Image_2026-04-06_at_14.26.58.jpeg?ex=69d4ed3c&is=69d39bbc&hm=27fd7ae8ab4695bd3aef77a3649aea877b8fdc2c70337080868d9e855b7a8483&" target="_blank">
+          <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490677636983292024/WhatsApp_Image_2026-04-06_at_14.26.58.jpeg?ex=69d4ed3c&is=69d39bbc&hm=27fd7ae8ab4695bd3aef77a3649aea877b8fdc2c70337080868d9e855b7a8483&" alt="בית כנסת">
+        </a>
+        <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490677635548971028/WhatsApp_Image_2026-04-06_at_14.26.06.jpeg?ex=69d4ed3b&is=69d39bbb&hm=2c2edacc3279c9ad1860bd10641a88b3537fea565769e3fe9f39ab0a5bef65db&" target="_blank">
+          <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490677635548971028/WhatsApp_Image_2026-04-06_at_14.26.06.jpeg?ex=69d4ed3b&is=69d39bbb&hm=2c2edacc3279c9ad1860bd10641a88b3537fea565769e3fe9f39ab0a5bef65db&" alt="תמונה">
+        </a>
+        <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420596437095/WhatsApp_Image_2026-04-05_at_14.43.56_3.jpeg?ex=69d4c5ea&is=69d3746a&hm=c8e1c9d22a6562ba3dfbbc90d3193b135f78e76417b68a319233c65ff9a654ba&" target="_blank">
+          <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635420596437095/WhatsApp_Image_2026-04-05_at_14.43.56_3.jpeg?ex=69d4c5ea&is=69d3746a&hm=c8e1c9d22a6562ba3dfbbc90d3193b135f78e76417b68a319233c65ff9a654ba&" alt="בית כנסת">
+        </a>
+        <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490677634848264302/WhatsApp_Image_2026-04-06_at_14.23.23.jpeg?ex=69d4ed3b&is=69d39bbb&hm=f376c958c48323be77e2e2df8f2a3232ca0dae7ea09e6d33e65bdb77db38da46&" target="_blank">
+          <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490677634848264302/WhatsApp_Image_2026-04-06_at_14.23.23.jpeg?ex=69d4ed3b&is=69d39bbb&hm=f376c958c48323be77e2e2df8f2a3232ca0dae7ea09e6d33e65bdb77db38da46&" alt="תמונה">
+        </a>
+        <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490677633556549743/WhatsApp_Image_2026-04-06_at_14.29.13.jpeg?ex=69d4ed3b&is=69d39bbb&hm=16474f23a2363ce3c9913fcc56dac9f27121ba54ca75951a8834da4c4247c80b&" target="_blank">
+          <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490677633556549743/WhatsApp_Image_2026-04-06_at_14.29.13.jpeg?ex=69d4ed3b&is=69d39bbb&hm=16474f23a2363ce3c9913fcc56dac9f27121ba54ca75951a8834da4c4247c80b&" alt="תמונה">
+        </a>
+        <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490677636203020331/WhatsApp_Image_2026-04-06_at_14.26.16.jpeg?ex=69d4ed3b&is=69d39bbb&hm=7b4ba39f948102a4ab71baa92d4f7eb720bf06d5b7f16c24b152c12b2eb6e4da&" target="_blank">
+          <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490677636203020331/WhatsApp_Image_2026-04-06_at_14.26.16.jpeg?ex=69d4ed3b&is=69d39bbb&hm=7b4ba39f948102a4ab71baa92d4f7eb720bf06d5b7f16c24b152c12b2eb6e4da&" alt="ספר תורה">
+        </a>
+        <a href="https://cdn.discordapp.com/attachments/1374007804830023762/1490635419602255872/WhatsApp_Image_2026-04-05_at_14.43.56.jpeg?ex=69d4c5ea&is=69d3746a&hm=eb2c292260b3c9333fd18032f1b4432324469534fd15ecef86cecf32ef3eec33&" target="_blank">
+          <img src="https://cdn.discordapp.com/attachments/1374007804830023762/1490635419602255872/WhatsApp_Image_2026-04-05_at_14.43.56.jpeg?ex=69d4c5ea&is=69d3746a&hm=eb2c292260b3c9333fd18032f1b4432324469534fd15ecef86cecf32ef3eec33&" alt="עליה לתורה">
+        </a>
     </div>
+  </div>
 </section>
 
 <section class="center">
@@ -286,7 +328,7 @@
   <h2 data-aos="fade-up">מה לקוחות אומרים?</h2>
   <div class="testimonials">
     <div class="testimonial" data-aos="fade-up" data-aos-delay="100">"הייתה חוויה מטורפת! הילד היה בעננים ועידו דאג לכל פרט ופרט. התמונות יצאו מדהימות!"</div>
-    <div class="testimonial" data-aos="fade-up" data-aos-delay="200">"הסרטון והתמונות מרגשות בטירוף! לא מפסיקים לקבל מחמאות על התיעוד של האירוע."</div>
+    <div class="testimonial" data-aos="fade-up" data-aos-delay="200">"הסרתון והתמונות מרגשות בטירוף! לא מפסיקים לקבל מחמאות על התיעוד של האירוע."</div>
     <div class="testimonial" data-aos="fade-up" data-aos-delay="300">"שירות ברמה הכי גבוהה שיש, סבלנות ודיוק. מומלץ בחום לכל מי שרוצה שקט נפשי."</div>
   </div>
 </section>
@@ -346,11 +388,22 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
+  // אתחול אנימציות
   AOS.init({
     duration: 800, 
     once: true,
     disable: false 
   });
+
+  // פונקציית גלילה לחצים
+  function scrollGal(direction) {
+    const gallery = document.getElementById('mainGallery');
+    const scrollAmount = 340; // רוחב תמונה + גאפ
+    gallery.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }
 </script>
 
 </body>
